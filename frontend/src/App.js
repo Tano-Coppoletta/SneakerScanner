@@ -1,5 +1,5 @@
 import './App.css';
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Topbar } from './components/Navbar/Navbar.js'
 import { Login } from './components/Login/Login.js'
 import { useEffect } from 'react';
@@ -19,13 +19,13 @@ function App() {
     }, []);
     
   return (<>
-    <HashRouter>
+    <BrowserRouter>
     <Topbar></Topbar>
       <Routes>
         <Route path="/" component={Homepage}/>
         <Route path='/login' component={Login} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   </>
   );
 }
