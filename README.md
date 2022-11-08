@@ -11,3 +11,15 @@ The user has also the possibility to create a list of favourite sneakers, and re
 
 ## Security and privacy
 While our web app would not have sensitive data, it should keep the users accounts and the vendor data secure.
+
+## Link to the site
+[Sneakerscanner](fluffy-dusk-8cf61e.netlify.app)
+
+## Tech stack diagram
+![image](cs484.jpg)
+
+## Minimum viable product
+The first version of our app will offer the following features:
+- Home page showing a table, each cell of the table dysplay a sneaker
+- Clicking on a sneaker opens another page with a description of the sneaker and links to the sites that purchase it with the cost
+- Navbar allows to login and to search for a sneaker
