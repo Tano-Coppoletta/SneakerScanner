@@ -1,0 +1,17 @@
+{
+  "name": "lambdas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ebay-api": "^7.1.1",
+    "node-fetch": "^2.6.7",
+    "sneaks-api": "^1.2.3"
+  }
+}
