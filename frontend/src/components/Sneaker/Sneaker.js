@@ -7,14 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Row, Col } from "react-bootstrap";
-
+//Small component for the SneakerTable component.
 function Sneaker(props) {
     const [input, setInput] = useState(props.threshold ? "$ " + props.threshold : "$ ");
 
 
     const handleChange = (e) => {
         e.preventDefault();
-        const re = /^\$ [0-9\b]*$/;
+        const re = /^\$ [0-9\b]*$/; //Magic regex to avoid deleting the $ 
         if (e.target.value === '' || re.test(e.target.value)) {
             setInput(e.target.value);
         }
@@ -30,7 +30,7 @@ function Sneaker(props) {
     const navigate = useNavigate();
     let resellRange = "Price Not available";
 
-    if (props.sneaker.lowestResellPrice !== undefined) {
+    if(Object.keys(props.sneaker.lowestResellPrice).length !== 0) {
         const max = Math.max(...Object.values(props.sneaker.lowestResellPrice));
         const min = Math.min(...Object.values(props.sneaker.lowestResellPrice));
         resellRange = "Price: $" + min + " - $" + max;
