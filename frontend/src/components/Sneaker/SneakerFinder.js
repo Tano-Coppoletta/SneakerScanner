@@ -15,13 +15,14 @@ function SneakerFinder(props){
             let result=[];
             setLoading(true);
             if(!sneakers.map((e)=>e.shoeName).includes(sneaker) && toLoad===undefined) { //If the sneaker is not in the list we have locally, search for it
-                const response = await fetch('https://fluffy-dusk-8cf61e.netlify.app/.netlify/functions/search?page=1&search=' + encodeURIComponent(sneaker));
+                const response = await fetch('https://sneakerscanner.shop/.netlify/functions/search?page=1&search=' + encodeURIComponent(sneaker));
                 const product = await response.json();
                 if(response.ok) {
                     setSneakers(product.products); //Update the local list of sneakers, to avoid querying many times
                     result = product.products.filter((e)=>e.shoeName===sneaker); //Set result
                 } else {
-                    throw product;
+                    console.log(product);
+                    setSneakers([]);
                 }
             }
             else{
@@ -39,7 +40,7 @@ function SneakerFinder(props){
         getSneaker(); 
     }, [setLoading, sneakers, sneaker, setSneakers, toLoad]);
 
-    return <BigSneaker sneaker={toLoad} changeFavourite={props.changeFavourite} isFavourite={props.favourites?.map((e) => {return e.productId}).includes(toLoad?._id)} ></BigSneaker>;    
+    return <BigSneaker sneaker={toLoad} changeFavourite={props.changeFavourite} session={props.session} isFavourite={props.favourites?.map((e) => {return e.productId}).includes(toLoad?._id)} ></BigSneaker>;    
 }
 
 export {SneakerFinder};

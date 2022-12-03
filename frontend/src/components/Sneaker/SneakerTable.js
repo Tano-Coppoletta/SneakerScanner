@@ -15,14 +15,15 @@ function SneakerTable(props) {
         
         const getSneakers = async () => {
             setLoading(true);
-            const response = await fetch('https://fluffy-dusk-8cf61e.netlify.app/.netlify/functions/search?page=' + page + '&search=' + encodeURIComponent(search));
+            const response = await fetch('https://sneakerscanner.shop/.netlify/functions/search?page=' + page + '&search=' + encodeURIComponent(search));
             const product = await response.json();
             if (response.ok) {
                 console.log(product.products.length);
                 setSneakers(product.products);
                 setEnd(product.end);
             } else {
-                throw product;
+                console.log(product);
+                setSneakers([]);
             }
             window.scrollTo(0, 0);
             setLoading(false);
@@ -30,13 +31,14 @@ function SneakerTable(props) {
         const getInitSneakers = async () => {
             setLoading(true);
 
-            const response = await fetch('https://fluffy-dusk-8cf61e.netlify.app/.netlify/functions/firstPage');
+            const response = await fetch('https://sneakerscanner.shop/.netlify/functions/firstPage');
             const product = await response.json();
             if (response.ok) {
                 console.log(product.products.length);
                 setSneakers(product.products);
             } else {
-                throw product;
+                console.log(product);
+                setSneakers([]);
             }
             window.scrollTo(0, 0);
             setLoading(false);
@@ -48,7 +50,7 @@ function SneakerTable(props) {
         }
     }, [search, page, setLoading, setSneakers]);
 
-    if (props.loading) {
+    if(props.loading) {
         return <Loading />;
     }
 

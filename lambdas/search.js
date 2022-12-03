@@ -47,11 +47,11 @@ export const handler = async (event, context, callback) => {
 	}else{
 		console.error("REDIS_PASSWORD env variable not found, disabling cache.");
 	}
+
 	let sneaksOver=false;
 	//sneaks API
 	sneaks.getProducts(s, 14*i+1, function(err, products){
 		if(products) {
-			console.log(products.length, 14*i-14,14*i)
 			ret = products.slice(14*i-14,14*i);
 			if(products.length!==14*i+1){
 				sneaksOver=true;
@@ -74,6 +74,7 @@ export const handler = async (event, context, callback) => {
 	api_path = api_path[api_path.length - 1]
 	const api = "https://www.klekt.com/_next/data/"+api_path+"/eu/list.json?category=brands&categories=brands&page="+i+"&search="+s
 	let unparsed = await(await fetch(api)).json();
+
 	if(unparsed) {
 		unparsed = unparsed["pageProps"]["plpData"]["data"]["search"]["items"];
 		unparsed.forEach((e) => {
